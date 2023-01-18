@@ -5,16 +5,16 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String n = br.readLine();
+        int n = Integer.parseInt(br.readLine());
         int count = 1;
         int range = 2;
-        if (n.equals("1")) System.out.print(1);
+        if (n == 1) System.out.println(1);
         else {
-            while (range <= Integer.parseInt(n)) {
+            while (range <= n) {
                 range += count * 6;
                 count++;
             }
-            System.out.print(count);
+            System.out.println(count);
         }
     }
 }
