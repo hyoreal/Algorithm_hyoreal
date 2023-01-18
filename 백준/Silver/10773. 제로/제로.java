@@ -1,8 +1,5 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -22,7 +19,7 @@ public class Main {
         }
 
         int size = deque.size();
-        for (int i = 0; i < size; i++) sum += deque.poll();
+        for (int i = 0; i < size; i++) sum += deque.pop();
         System.out.println(sum);
     }
 }
