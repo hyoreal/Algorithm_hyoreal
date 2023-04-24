@@ -18,28 +18,23 @@ public class Main {
 			for (String str : temp) broken[Integer.parseInt(str)] = true;
 		}
 
-		if (N == 100) System.out.println(0);
-		else if (M == 10) System.out.println(Math.abs(N - now));
-		else {
-			int ans = Math.abs(now - N);
+		int result = Math.abs(N - now); //초기값 설정
+		for(int i = 0; i <= 999999; i++) {
+			String str = String.valueOf(i);
+			int len = str.length();
 
-			for (int i = 0; i < 1000000; i++) {
-				// i까지 이동 후, +,-로 이동 브루트포스
-				String[] number = Integer.toString(i).split("");
-
-				boolean flag = true;
-				//숫자로 이동 가능한지
-				for (String index : number) {
-					if (broken[Integer.parseInt(index)]) {
-						flag = false;
-						break;
-					}
-				}
-				if (flag) {
-					ans = Math.min(ans, number.length + Math.abs(i - N));
+			boolean isBreak = false;
+			for(int j = 0; j < len; j++) {
+				if(broken[str.charAt(j) - '0']) { //고장난 버튼을 눌러야 하면
+					isBreak = true;
+					break; //더 이상 탐색하지 않고 빠져나온다.
 				}
 			}
-			System.out.println(ans);
+			if(!isBreak) { //i를 누를때 고장난 버튼을 누르지 않는다면
+				int min = Math.abs(N - i) + len; //i를 누른 후(len) target까지 이동하는 횟수(target - i)
+				result = Math.min(min, result);
+			}
 		}
+		System.out.println(result);
 	}
 }
